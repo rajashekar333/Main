@@ -1,0 +1,50 @@
+#To run the previous command
+!!
+
+# To Replace string in previous command
+!!:s/old/new
+
+# To Print 'n'th line in a file
+sed '32!d' cass-fxbo-02.sys.comcast.net.cfg
+
+# To add text in 'n'th line in a file
+sed -i "33i \\\thostgroups\t\tipam-webserver"  ipamdb-fxbo-02.sys.comcast.net.cfg
+
+# for loop as a command
+for ii in `ls qamedia*`; do sed '32!d' $ii; done
+
+# To delete a line that matches string in VI Editor
+:g/match/d
+
+# To replace string with $1 in vi
+%s/\vhello\(([^)]*)\)/hello[\1]/
+
+## To replace a string in n th line
+sed 'n s/search_pattern/replace_pattern/' filename
+
+## To login using ssh and for loop (ssh -qt) and continue on connected server
+for ii in `cat all-servers.lst2 | grep usm-fxbo-01`; do ssh -qt clduser@$ii; done
+
+## To run tty on ssh 
+ssh -qt clduser@$ii "sudo <command>"
+
+### Puppet to install any module
+puppet module install puppetlabs-apache
+
+
+
+### Temp to cpy something to all servers
+
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh clduser@$ii "grep -i check_mem  /usr/local/nagios/etc/nrpe.cfg"; done
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh clduser@$ii "grep -i check_mem  /usr/local/nagios/etc/nrpe.cfg"; done
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh clduser@$ii "grep -i check_mem  /usr/local/nagios/etc/nrpe.cfg"; done
+for ii in `cat all-servers-name.lst|grep cass-fxbo-02`; do echo -n "$ii:"; ssh clduser@$ii "sudo sed -i "s/-w 80 -c90/-C -w 80 -c 90/g"  /usr/local/nagios/etc/nrpe.cfg"; done
+for ii in `cat all-servers-name.lst|grep cass-fxbo-02`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo sed -i "s/-w 80 -c90/-C -w 80 -c 90/g"  /usr/local/nagios/etc/nrpe.cfg"; done
+for ii in `cat all-servers-name.lst|grep cass-fxbo-02`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo sed -i 's/-w 80 -c90/-C -w 80 -c 90/g'  /usr/local/nagios/etc/nrpe.cfg"; done
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo sed -i 's/-w 80 -c90/-C -w 80 -c 90/g'  /usr/local/nagios/etc/nrpe.cfg"; done
+ssh -qt clduser@qaugc-fxbo-01.sys.comcast.net "sudo sed -i 's/-w 80 -c90/-C -w 80 -c 90/g'  /usr/local/nagios/etc/nrpe.cfg"
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh clduser@$ii "grep -i check_mem  /usr/local/nagios/etc/nrpe.cfg"; done
+scp -p clduser@usm-fxbo-01.sys.comcast.net:/usr/local/nagios/libexec/check_mem.pl .
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; scp check_mem.pl clduser@$ii:/tmp; done
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo cp /tmp/check_mem.pl /usr/local/nagios/libexec"; ssh -qt clduser@$ii "sudo chown nagios:nagios /usr/local/nagios/libexec/check_mem.pl; done
+for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo cp /tmp/check_mem.pl /usr/local/nagios/libexec"; ssh -qt clduser@$ii "sudo chown nagios:nagios /usr/local/nagios/libexec/check_mem.pl" ; done
