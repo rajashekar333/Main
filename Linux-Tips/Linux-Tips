@@ -30,6 +30,8 @@ ssh -qt clduser@$ii "sudo <command>"
 
 ### Puppet to install any module
 puppet module install puppetlabs-apache
+## Puppet to pull from Master ##
+puppet agent --test
 
 
 
@@ -48,3 +50,4 @@ scp -p clduser@usm-fxbo-01.sys.comcast.net:/usr/local/nagios/libexec/check_mem.p
 for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; scp check_mem.pl clduser@$ii:/tmp; done
 for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo cp /tmp/check_mem.pl /usr/local/nagios/libexec"; ssh -qt clduser@$ii "sudo chown nagios:nagios /usr/local/nagios/libexec/check_mem.pl; done
 for ii in `cat all-servers-name.lst`; do echo -n "$ii:"; ssh -qt clduser@$ii "sudo cp /tmp/check_mem.pl /usr/local/nagios/libexec"; ssh -qt clduser@$ii "sudo chown nagios:nagios /usr/local/nagios/libexec/check_mem.pl" ; done
+## Just testing oSX KEY Chain
