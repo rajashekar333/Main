@@ -30,6 +30,8 @@ ssh -qt clduser@$ii "sudo <command>"
 
 ### Puppet to install any module
 puppet module install puppetlabs-apache
+## Puppet to pull from Master ##
+puppet agent --test
 
 
 
