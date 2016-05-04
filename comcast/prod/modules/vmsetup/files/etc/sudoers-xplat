@@ -1,6 +1,0 @@
-Defaults:xplat    !requiretty
-
-xplat ALL = NOPASSWD: /sbin/service tomcat6 start, /sbin/service tomcat6 stop, /sbin/service tomcat6 restart, /bin/rm -rf /usr/share/tomcat6/webapps/*, /bin/rm -rf /usr/share/tomcat6/work/*, /bin/rm -rf /usr/share/tomcat6/temp/*, /bin/rm -rf /usr/share/tomcat6/logs/*, /usr/bin/killall -9 -u tomcat java, /bin/rm /var/run/tomcat6.pid, /bin/rm /var/lock/subsys/tomcat6
-xplat ALL = NOPASSWD: /sbin/service tomcat7 start, /sbin/service tomcat7 stop, /sbin/service tomcat7 restart, /bin/rm -rf /usr/share/tomcat7/webapps/*, /bin/rm -rf /usr/share/tomcat7/work/*, /bin/rm -rf /usr/share/tomcat7/temp/*, /bin/rm -rf /usr/share/tomcat7/logs/*, /usr/bin/killall -9 -u tomcat java, /bin/rm /var/run/tomcat7.pid, /bin/rm /var/lock/subsys/tomcat7
-xplat ALL = NOPASSWD: /sbin/service tomcat7 start, /sbin/service tomcat7 stop, /sbin/service tomcat7 restart, /sbin/service tomcat7 status, /bin/rm -rf /opt/tomcat7/webapps/*, /bin/rm -rf /opt/tomcat7/work/*, /bin/rm -rf /opt/tomcat7/temp/*, /bin/rm -rf /opt/tomcat7/logs/*, /usr/bin/killall -9 -u tomcat java, /bin/rm /var/run/tomcat7.pid, /bin/rm /var/lock/subsys/tomcat7
-
